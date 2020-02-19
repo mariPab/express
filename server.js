@@ -24,6 +24,10 @@ app.get('/about', (req, res) => {
     res.show('about.html');
 });
 
+app.use('/user', (req, res, next) => {
+    res.show('loginPanel.html');
+});
+
 app.use((req, res) => {
     res.status(404).show('notFound.html');
 });
