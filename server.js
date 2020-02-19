@@ -10,6 +10,8 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(express.static(path.join(__dirname + '/public')));
+
 app.get('/', (req, res) => {
     res.show('index.html');
 });
@@ -22,8 +24,8 @@ app.get('/about', (req, res) => {
     res.show('about.html');
 });
 
-app.use('/user', (req, res, next) => {
-    res.show('loginPanel.html');
+app.use((req, res) => {
+    res.status(404).show('notFound.html');
 });
 
 app.listen(8000, () => {
